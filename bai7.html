@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function caesar(str ,num){
+            var a = [];
+            for(let i=0;i<str.length;i++){
+                if((/[a-z]/.test(str[i]))==true){ 
+                    var x = 0;
+                    x = str.charCodeAt(i)+num;
+                    if (x > 122) x=x-26;
+                    else if (x < 97) x=x+26;
+                    a.push(String.fromCharCode(x));
+                }
+                else if((/[A-Z]/.test(str[i]))==true){
+                    var x = 0;
+                    x = str.charCodeAt(i)+num;
+                    if (x > 90) x=x-26;
+                    else if (x < 65) x=x+26;
+                    a.push(String.fromCharCode(x));
+                }
+                else{
+                    a.push(str[i]);
+                }
+            }
+            return a.join("").toString();
+        }
+        console.log(caesar("Hey",5));
+        console.log(caesar("Mjqqt, Btwqi", -5));
+
+    </script>
+</body>
+</html>
