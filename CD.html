@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function CD (id,name,singer,quantity,price){
+            this.id = id;
+            this.name = name;
+            this.singer = singer;
+            this.quantity = quantity;
+            this.price = price;
+        }
+        var B = {
+            listCD: [],
+            addCD: function(id,name,singer,quantity,price){
+                if(this.listCD.length==0) this.listCD.push(new CD(id,name,singer,quantity,price));
+                else{
+                    var check = "valid id";
+                    for(let i = 0;i<this.listCD.length;i++){
+                            if(id==this.listCD[i].id) check = "id exist";
+                    }
+                    if(id==undefined) check="error";
+                    console.log(check);
+                    if(check=="valid id"){
+                        this.listCD.push(new CD(id,name,singer,quantity,price));
+                    }
+                }
+                // console.log("Count: "+this.listCD.length);
+                // var totalPrice = 0;
+                // for(let j=0;j<this.listCD.length;j++){
+                //     totalPrice += this.listCD[j].price
+                // }
+                // return ("Total Price: " + totalPrice);
+            },
+            count: function(){return this.listCD.length},
+            totalPrice: function(){
+                var totalPrice = 0;
+                for(let j=0;j<this.listCD.length;j++){
+                    totalPrice += this.listCD[j].price
+                }
+                return  totalPrice;
+            },
+            sort_Price: function(){
+                var a;
+                for(let i = 0;i<this.listCD.length - 1;i++){
+                    for(let j = i+1;j < this.listCD.length;j++){
+                        if(this.listCD[i].price < this.listCD[j].price){
+                            a = this.listCD[i];
+                            this.listCD[i] = this.listCD[j];
+                            this.listCD[j] = a;
+                        }
+                    }
+                }
+                return console.log(this.listCD);
+            },
+            sort_name: function(){
+                var a;
+                for(let i = 0;i<this.listCD.length - 1;i++){
+                    for(let j = i+1;j < this.listCD.length;j++){
+                        if(this.listCD[i].name > this.listCD[j].name){
+                            a = this.listCD[i];
+                            this.listCD[i] = this.listCD[j];
+                            this.listCD[j] = a;
+                        }
+                    }
+                }
+                return console.log(this.listCD);
+            },
+            show_listCD: function(){
+                return this.listCD;
+            }
+        };
+    </script>
+</body>
+</html>
