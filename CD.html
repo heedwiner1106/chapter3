@@ -18,7 +18,7 @@
         var B = {
             listCD: [],
             addCD: function(id,name,singer,quantity,price){
-                if(this.listCD.length==0) this.listCD.push(new CD(id,name,singer,quantity,price));
+                if(this.listCD.length==0 && id != undefined) this.listCD.push(new CD(id,name,singer,quantity,price));
                 else{
                     var check = "valid id";
                     for(let i = 0;i<this.listCD.length;i++){
