@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function GD_Dat(id,date,price,type,area,total){
+            this.category = "GD-Dat",
+            this.id = id,
+            this.date = new Date(date),
+            this.price = price,
+            this.type = type,
+            this.area = area,
+            this.total = total
+        }
+        function GD_Nha(id,date,price,type,area,address,total){
+            this.category = "GD-Nha",
+            this.id = id,
+            this.date = Date(date),
+            this.price = price,
+            this.type = type,
+            this.area = area,
+            this.address = address,
+            this.total = total
+        }
+        var management = {
+            list: [],
+            add_GD_Dat: function(id,date,price,type,area){
+                let total;
+                if(type=='B'||type=='C') total = price*area;
+                if(type=='A') total = price*area*1.5
+                if (id == undefined || price < 0 || area < 0 || (!/[A-C]/.test(type))) return "Wrong format";
+                else if(this.list.length==0) {
+                    this.list.push(new GD_Dat(id,date,price,type,area,total));
+                    return console.log("Add completed");
+                }
+                else{
+                    for(let i = 0;i<this.list.length;i++){
+                        if (id == this.list[i].id) return "ID exist!";
+                    }
+                    this.list.push(new GD_Dat(id,date,price,type,area,total));
+                    return console.log("Add completed");
+                }
+            },
+            add_GD_Nha: function(id,date,price,type,area,address){
+                let total;
+                if(/caocap/i.test(type)) total = price*area;
+                if(/thuong/i.test(type)) total = price*area*0.9;
+                if (id == undefined || price < 0 || area < 0 || (!/[caocap|thuong]/i.test(type))) return "Wrong format";
+                else if(this.list.length==0){
+                    this.list.push(new GD_Nha(id,date,price,type,area,address,total));
+                    return console.log("Add completed");
+                }
+                else{
+                    for(let i = 0;i<this.list.length;i++){
+                        if (id == this.list[i].id) return "ID exist!";
+                    }
+                    this.list.push(new GD_Nha(id,date,price,type,area,total));
+                    return console.log("Add completed");
+                }
+            },
+            delete_transaction: function(id){
+                for(let i = 0;i<this.list.length;i++){
+                    if(this.list[i].id == id) {
+                        this.list.splice(i,1);
+                        return "Successful delete";
+                    }
+                }
+                return "ID not exist";
+            },
+            sum_transaction: function(){
+                let sumDat = 0;
+                let sumNha = 0;
+                for(let i = 0;i<this.list.length;i++){
+                    if(this.list[i].category == "GD-Dat") sumDat++;
+                    if(this.list[i].category == "GD-Nha") sumNha++;
+                }
+                return "Đất: " + sumDat + "; Nhà: " + sumNha; 
+            },
+            average_Dat: function(){
+                let avg = 0;
+                for(let i = 0;i<this.list.length;i++){
+                    if(this.list[i].category == "GD-Dat") avg += this.list[i].total;
+                }
+                return "Average: " + avg/this.list.length;
+            },
+            list_bill_september: function(){
+                for(let i = 0;i<this.list.length;i++){
+                    if((this.list[i].date.getMonth()+1) == 9 && (this.list[i].date.getFullYear()== 2021)) console.log(this.list[i]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

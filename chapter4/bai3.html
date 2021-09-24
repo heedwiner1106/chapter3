@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function most_times(b){
+            var dem = 0;
+            var count = 0;
+            var arr=[];
+            var array = [];
+            arr = b;
+            for(let i =0;i<arr.length;i++){
+                var dem = 1;
+                for(let j=0;j<arr.length;j++){
+                    if (i==j) continue;
+                    if(arr[i]==arr[j]) dem++;
+                }
+                if(dem>=count){
+                    count = dem;
+                    array.push(arr[i]);
+                }
+            }
+            console.log(array);
+            return array.pop();
+        }
+        console.log(most_times([1,2,1,4,1]));
+        
+    </script>
+</body>
+</html>

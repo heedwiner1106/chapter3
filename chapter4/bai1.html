@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function check(x1,x2,x3,x4,x5){
+            var arr=[x1,x2,x3,x4,x5];
+            for(let c of arr){
+                if(c.search("L")!=3) return "Sai rồi: "+c;
+                if(c.search("00")!=0) return "Sai rồi: "+c;
+                let sarr = Array.from(c);
+                if(!/[2-5]/.test(sarr[2])) return "Sai rồi: "+c;
+                for(let i = 4;i<8;i++){
+                    if(!/[0-9]/.test(sarr[i])) return "Sai rồi: "+c;
+                }
+                if(sarr[8]!= undefined) return "Sai rồi " +c;
+            }
+            return "Đúng rồi"
+        }
+    </script>
+</body>
+</html>
