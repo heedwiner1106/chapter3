@@ -1,0 +1,14 @@
+body{
+    position: relative;
+}
+.category{
+    position: absolute;
+    top: 2em;
+    height: 0px;
+    background-color: wheat;
+    transition: height 0.5s;
+    overflow: hidden;
+}
+.d-block{
+    height: 70px;
+}

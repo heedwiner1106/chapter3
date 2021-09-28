@@ -1,0 +1,18 @@
+body{
+    position: relative;
+}
+.input-time{
+    position: absolute;
+    top: -9em;
+    left: 50%;
+}
+.btn-start{
+    position: absolute;
+    top: -7em;
+    right: -20em;
+}
+.input-timem{
+    position: absolute;
+    top: -7em;
+    left: 50%;
+}
