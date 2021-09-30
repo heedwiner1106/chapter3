@@ -1,7 +1,12 @@
 var a = new Date();
-var h1 = (a.getHours()-a.getHours()%10)/10;
-var h2 = a.getHours()%10;
-console.log(h1);
+var hour = a.getHours();
+console.log(hour);
+// hour += 7;
+if(hour >= 24) hour-=24;
+console.log(hour);
+
+var h1 = (hour-hour%10)/10;
+var h2 = hour%10;
 switch(h1){
     case 0:{
         document.getElementsByClassName("h4")[0].style.display = "none";

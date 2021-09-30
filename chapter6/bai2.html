@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <button onclick="startTimer()">Start</button>
+    <button id="stop" onclick="stop()">Stop</button>
+    <button id="reset" onclick="reset()">Reset</button>
+    <div id="output" style="color: blanchedalmond;">00:00:00</div>
+
+
+
+    <script>
+        var stopp = false;
+        var display = document.getElementById("output");
+        var rs = 0;
+        function startTimer() {
+            var duration = 0;
+            var timer = duration, minutes = 0, seconds = 0, hours = 0;
+            var loop = setInterval(function () {
+                miliseconds = timer;
+                if(miliseconds > 99){
+                    seconds++;
+                    timer = 0;
+                }
+                if(seconds > 59){
+                    minutes++;
+                    seconds=0;
+                }
+                if(minutes > 59){
+                    hour++;
+                    minutes=0;
+                }
+                display.textContent = hours+":"+ minutes + ":" + seconds + ":" + miliseconds;
+                if(!stopp){
+                    ++timer;
+                }
+                if(rs == 1){
+                    clearInterval(loop);
+                    rs = 0;
+                    display.textContent = "00:00:00";
+                }
+            }, 10);
+        }
+        function stop(){
+            stopp = !stopp;
+            if(document.getElementById("stop").innerText == "Stop"){
+                document.getElementById("stop").innerText = "Continute";
+            }else document.getElementById("stop").innerText = "Stop";
+        }
+        function reset(){
+            // rs = 1;
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .slider{
+            position: relative; 
+            width: 200px; 
+            height: 200px; 
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+        }
+        .item{
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background-color: blue;
+            transition: all, 2s;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="item item1" style="left: 0;" id="tem1">item 1</div>
+        <div class="item item2" style="left: 100%;" id="tem2">item 2</div>
+        <div class="item item3" style="left: 100%;" id="tem3">item 3</div>
+        <div class="item item4" style="left: 100%;" id="tem4">item 4</div>
+        <div class="item item5" style="left: 100%;" id="tem5">item 5</div>
+
+    </div>
+    <div>
+        <button onclick="btn();" id="left">left</button>
+        <button onclick="btn();" id="right">right</button>
+    </div>
+    <script>
+        var active = 1;
+        function btn(){
+            console.log(document.activeElement.getAttribute('id'));
+            if(document.activeElement.getAttribute('id')=="left") active --;
+            if(document.activeElement.getAttribute('id')=="right") active ++;
+            if(active>5) active = 5;
+            if(active<1) active = 1;
+            console.log(active);
+            switch(active){
+                case 1:{
+                    document.getElementById("tem1").style.left = "0";
+                    document.getElementById("tem2").style.left = "100%";
+                    document.getElementById("tem3").style.left = "100%";
+                    document.getElementById("tem4").style.left = "100%";
+                    document.getElementById("tem5").style.left = "100%";
+                    break;
+                }
+                case 2: {
+                    document.getElementById("tem1").style.left = "-100%";
+                    document.getElementById("tem2").style.left = "0";
+                    document.getElementById("tem3").style.left = "100%";
+                    document.getElementById("tem4").style.left = "100%";
+                    document.getElementById("tem5").style.left = "100%";
+                    break;
+                }
+                case 3:{
+                    document.getElementById("tem1").style.left = "-100%";
+                    document.getElementById("tem2").style.left = "-100%";
+                    document.getElementById("tem3").style.left = "0";
+                    document.getElementById("tem4").style.left = "100%";
+                    document.getElementById("tem5").style.left = "100%";
+                    break;
+                }
+                case 4:{
+                    document.getElementById("tem1").style.left = "-100%";
+                    document.getElementById("tem2").style.left = "-100%";
+                    document.getElementById("tem3").style.left = "-100%";
+                    document.getElementById("tem4").style.left = "0";
+                    document.getElementById("tem5").style.left = "100%";
+                    break;
+                }
+                case 5:{
+                    document.getElementById("tem1").style.left = "-100%";
+                    document.getElementById("tem2").style.left = "-100%";
+                    document.getElementById("tem3").style.left = "-100%";
+                    document.getElementById("tem4").style.left = "-100%";
+                    document.getElementById("tem5").style.left = "0";
+                    break;
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

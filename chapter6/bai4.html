@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Game đoán màu</title>
+    <link rel="stylesheet" href="./test.css">
+</head>
+<body>
+    <div style="width: 200px; height: 200px;" id="divv"></div>
+    <button onclick="active()" id="" class="btn" style="width: 100px; height: 50px;"></button>
+    <button onclick="active()" id="" class="btn" style="width: 100px; height: 50px;"></button>
+    <button onclick="active()" id="" class="btn" style="width: 100px; height: 50px;"></button>
+    <button onclick="active()" id="" class="btn" style="width: 100px; height: 50px;"></button>
+    <button onclick="active()" id="" class="btn" style="width: 100px; height: 50px;"></button>
+    <button onclick="active()" id="" class="btn" style="width: 100px; height: 50px;"></button>
+
+    <br>
+    <button id="reload" onclick="window.location.reload()">Reload</button>
+    <script>
+        dem = 0;
+        var ranResult = Math.floor(Math.random() * 6);
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        var color = getRandomColor();
+        document.getElementById("divv").style.backgroundColor = color;
+        var length = document.getElementsByClassName("btn").length;
+        document.getElementById("divv").innerHTML = document.getElementById("divv").style.backgroundColor;
+
+        for(let i = 0;i<length;i++){
+            if(i == ranResult) document.getElementsByClassName("btn")[i].innerText = color;
+            else document.getElementsByClassName("btn")[i].innerText = getRandomColor();
+        }
+        function active(){
+            if(document.activeElement.innerHTML== color){
+                alert("Đúng rồi!");
+                var length = document.getElementsByClassName("btn").length;
+                for(let i = 0;i<length;i++){
+                    document.getElementsByClassName("btn")[i].style.backgroundColor = document.getElementsByClassName("btn")[i].innerHTML;
+                }
+            }
+            else{
+                if(dem == 2){
+                    alert("sai hơi nhiều rồi");
+                    window.location.reload();
+                }
+                else{
+                dem++;
+                alert("sai rồi");
+                document.activeElement.style.backgroundColor = document.activeElement.innerHTML;
+                }
+            }
+        }
+    </script>
+
+</body>
+</body>
+</html>

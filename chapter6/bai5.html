@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="tinhtien">
+        <label for="price">Nhập giá tiền: </label>
+        <input  type="number" id="price">
+        <label for="tienbo">Nhập % tiền bo: </label>
+        <input type="number" id="tienbo" max="20" placeholder="% bo"> 
+    </form>
+    <h1 id="nofication"></h1>
+     <button onclick="tinhtienbo()">OK</button>
+    <div>Hóa đơn: <span id="bill"></span></div>
+    <div>Tổng cộng: <span id="total"></span></div>
+    <div>Tiền bo kiếm được: <span id="totalbo"></span></div>
+
+    
+    <script>
+        var totalbo = 0;
+        var total = 0;
+        function tinhtienbo(){
+            if(document.getElementById("tienbo").value > 50){
+                document.getElementById("nofication").innerText = "Ai bo mô nhiều rứa ngó lại hử :D";
+            }
+            else {
+                document.getElementById("nofication").innerHTML = "";
+                var price = Number.parseInt(document.getElementById("price").value,10);
+                var tienbo = Number.parseInt(document.getElementById("tienbo").value,10);
+                console.log(price);
+                console.log(tienbo);
+                var bill = price + price*(tienbo/100);
+                total += bill;
+                totalbo += price*tienbo/100;
+                document.getElementById("bill").innerText = bill;
+                document.getElementById("total").innerText = total;
+                document.getElementById("totalbo").innerText = totalbo;
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <div class="maytinh">
+        <button onclick="btn(1)">1</button>
+        <button onclick="btn(2)">2</button>
+        <button onclick="btn(3)">3</button>
+        <button onclick="btn(4)">4</button>
+        <button onclick="btn(5)">5</button>
+        <button onclick="btn(6)">6</button>
+        <button onclick="btn(7)">7</button>
+        <button onclick="btn(8)">8</button>
+        <button onclick="btn(9)">9</button>
+        <button onclick="btn(0)">0</button>
+
+        <button onclick="btn(' + ')">+</button>
+        <button onclick="btn(' - ')">-</button>
+        <button onclick="btn(' x ')">x</button>
+        <button onclick="btn(' : ')">:</button>
+
+        <button onclick="operator()">=</button>
+        <p id="calculation" style="color: white; background-color:cadetblue;"></p>
+        <p id="result" style="color: white; background-color:cadetblue;"></p>
+    </div>
+    <script>
+        var a ="";
+        var arr = [];
+        var arrOperator = [];
+        var b ="";
+        var last = arr.length-1;
+        var total;
+        function btn(value){
+            if(value == ' + ' || value == ' - ' || value == ' x ' || value == ' : ') {
+                arr.push(parseInt(b,10));
+                b = "";
+                arrOperator.push(value);
+                total = parseInt(arr[0],10);
+            }
+            else b+=value;
+            a+=value;
+            document.getElementById("calculation").innerText = a;
+            console.log(total);
+            console.log(arr);
+            console.log(arrOperator);
+            var c = parseInt(a,10);
+            console.log("C = "+c);
+        }
+        
+        function operator(){
+            arr.push(parseInt(b,10));
+            console.log(total);
+            console.log(arr);
+            console.log(arrOperator);
+            for(let i = 0;i<arrOperator.length;i++){
+                if(arrOperator[i] == ' + ') total += arr[i+1];
+                if(arrOperator[i] == ' - ') total -= arr[i+1];
+                if(arrOperator[i] == ' x ') total *= arr[i+1];
+                if(arrOperator[i] == ' : ') total /= arr[i+1];
+            }
+            document.getElementById("result").innerText = total;
+            a ="";
+            b ="";
+            arr = [];
+            arrOperator = [];
+            total = 0;
+            document.getElementById("calculation").innerText = "";
+        }
+    </script>
+</body>
+</html>
