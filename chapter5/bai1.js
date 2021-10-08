@@ -1,7 +1,7 @@
 var a = new Date();
 var hour = a.getHours();
 console.log(hour);
-// hour += 7;
+hour += 7;
 if(hour >= 24) hour-=24;
 console.log(hour);
 

@@ -36,8 +36,8 @@
         <div class="item item3" style="left: 100%;" id="tem3">item 3</div>
         <div class="item item4" style="left: 100%;" id="tem4">item 4</div>
         <div class="item item5" style="left: 100%;" id="tem5">item 5</div>
-
     </div>
+    <div><button onclick="btnNum();" id="1">1</button><button onclick="btnNum();" id="2">2</button><button onclick="btnNum();" id="3">3</button><button onclick="btnNum();" id="4">4</button><button onclick="btnNum();" id="5">5</button></div>
     <div>
         <button onclick="btn();" id="left">left</button>
         <button onclick="btn();" id="right">right</button>
@@ -51,9 +51,12 @@
             if(active>5) active = 5;
             if(active<1) active = 1;
             console.log(active);
+            change(active);
+        }
+        function change(active){
             switch(active){
                 case 1:{
-                    document.getElementById("tem1").style.left = "0";
+                    document.getElementById("tem1").style.left = "5%";
                     document.getElementById("tem2").style.left = "100%";
                     document.getElementById("tem3").style.left = "100%";
                     document.getElementById("tem4").style.left = "100%";
@@ -62,7 +65,7 @@
                 }
                 case 2: {
                     document.getElementById("tem1").style.left = "-100%";
-                    document.getElementById("tem2").style.left = "0";
+                    document.getElementById("tem2").style.left = "5%";
                     document.getElementById("tem3").style.left = "100%";
                     document.getElementById("tem4").style.left = "100%";
                     document.getElementById("tem5").style.left = "100%";
@@ -71,7 +74,7 @@
                 case 3:{
                     document.getElementById("tem1").style.left = "-100%";
                     document.getElementById("tem2").style.left = "-100%";
-                    document.getElementById("tem3").style.left = "0";
+                    document.getElementById("tem3").style.left = "5%";
                     document.getElementById("tem4").style.left = "100%";
                     document.getElementById("tem5").style.left = "100%";
                     break;
@@ -80,7 +83,7 @@
                     document.getElementById("tem1").style.left = "-100%";
                     document.getElementById("tem2").style.left = "-100%";
                     document.getElementById("tem3").style.left = "-100%";
-                    document.getElementById("tem4").style.left = "0";
+                    document.getElementById("tem4").style.left = "5%";
                     document.getElementById("tem5").style.left = "100%";
                     break;
                 }
@@ -89,12 +92,16 @@
                     document.getElementById("tem2").style.left = "-100%";
                     document.getElementById("tem3").style.left = "-100%";
                     document.getElementById("tem4").style.left = "-100%";
-                    document.getElementById("tem5").style.left = "0";
+                    document.getElementById("tem5").style.left = "5%";
                     break;
                 }
             }
         }
-        
+        function btnNum(){
+            var a = document.activeElement.getAttribute('id');
+            console.log(a);
+            change(Number.parseInt(a,10));
+        }
     </script>
 </body>
 </html>
