@@ -60,8 +60,6 @@ $(document).ready(function(){
             console.log("distance: "+ distance);
         }
     }
-    console.log("tai xe < 5km");
-    console.log(taixe5km);
     init(lati,longi,'map');
     init(lati,longi,'taixe5km',taixe5km);
 });
@@ -73,8 +71,6 @@ function init(a,b,display, markerr) {
     });
     var marker,i;
     if(markerr){
-        console.log("markerr: ");
-        console.log(markerr.length);
         for(i = 0; i<markerr.length ;i++){
             var latt = (markerr[i].posi.lat);
             var long = (markerr[i].posi.lng);
@@ -83,7 +79,6 @@ function init(a,b,display, markerr) {
                 position: posi1,
                 map: map,
             })
-            console.log(i);
         }
     }
     else{
